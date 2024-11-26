@@ -1,12 +1,14 @@
-const express = require("express");
-const cors = require("cors");
-const path = require("path");
-const authRoutes = require("./routes/auth.js");
+import express from "express";
+import cors from "cors";
+import path from "path";
+import dotenv from "dotenv";
+import twilio from "twilio";
+import authRoutes from "./routes/auth.js"; // Assuming `auth.js` is an ES module.
 
 const app = express();
 const PORT = process.env.PORT || 5003;
 
-require("dotenv").config();
+dotenv.config();
 
 const __dirname = path.resolve();
 
@@ -19,7 +21,7 @@ app.get("*", (req, res) => {
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
 const messagingServiceSid = process.env.TWILIO_MESSAGING_SERVICE_SID;
-const twilioClient = require("twilio")(accountSid, authToken);
+const twilioClient = twilio(accountSid, authToken);
 
 app.use(cors());
 app.use(express.json());
