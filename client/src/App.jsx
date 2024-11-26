@@ -18,7 +18,9 @@ const App = () => {
   useEffect(() => {
     const fetchApiKey = async () => {
       try {
-        const response = await fetch("http://localhost:5003/get-api-key");
+        const response = await fetch(
+          "https://talkify-chat-app.onrender.com/get-api-key"
+        );
         const data = await response.json();
         setApiKey(data.apiKey);
         setIsLoading(false);

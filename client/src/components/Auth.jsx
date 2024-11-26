@@ -28,8 +28,7 @@ const Auth = () => {
 
     const { username, password, phoneNumber, avatarURL } = form;
 
-    const URL = "http://localhost:5003/auth";
-    // const URL = 'https://medical-pager.herokuapp.com/auth';
+    const URL = "https://talkify-chat-app.onrender.com/auth";
 
     const {
       data: { token, userId, hashedPassword, fullName },
