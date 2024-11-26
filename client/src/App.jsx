@@ -21,14 +21,22 @@ const App = () => {
         const response = await fetch(
           "https://talkify-chat-app.onrender.com/get-api-key"
         );
-        const data = await response.json();
-        setApiKey(data.apiKey);
-        setIsLoading(false);
+        const text = await response.text();
+
+        if (response.ok) {
+          const data = JSON.parse(text);
+          setApiKey(data.apiKey);
+          setIsLoading(false);
+        } else {
+          console.error("Error fetching API key:", response.status, text);
+          setIsLoading(false);
+        }
       } catch (error) {
         console.error("Error fetching API key:", error);
         setIsLoading(false);
       }
     };
+
     fetchApiKey();
   }, []);
 
