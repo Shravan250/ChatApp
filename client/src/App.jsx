@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { StreamChat } from "stream-chat";
 import { Chat } from "stream-chat-react";
 import Cookies from "universal-cookie";
@@ -12,37 +12,40 @@ const App = () => {
   const [createType, setCreateType] = useState("");
   const [isCreating, setIsCreating] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
-  const [apiKey, setApiKey] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  // const [apiKey, setApiKey] = useState(null);
+  // const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchApiKey = async () => {
-      try {
-        const response = await fetch(
-          "https://talkify-chat-app.onrender.com/get-api-key"
-        );
-        const text = await response.text();
+  // useEffect(() => {
+  //   const fetchApiKey = async () => {
+  //     try {
+  //       const response = await fetch(
+  //         "https://talkify-chat-app.onrender.com/get-api-key"
+  //       );
+  //       const text = await response.text();
+  //       console.log(text);
 
-        if (response.ok) {
-          const data = JSON.parse(text);
-          setApiKey(data.apiKey);
-          setIsLoading(false);
-        } else {
-          console.error("Error fetching API key:", response.status, text);
-          setIsLoading(false);
-        }
-      } catch (error) {
-        console.error("Error fetching API key:", error);
-        setIsLoading(false);
-      }
-    };
+  //       if (response.ok) {
+  //         const data = JSON.parse(text);
+  //         setApiKey(data.apiKey);
+  //         setIsLoading(false);
+  //       } else {
+  //         console.error("Error fetching API key:", response.status, text);
+  //         setIsLoading(false);
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching API key:", error);
+  //       setIsLoading(false);
+  //     }
+  //   };
 
-    fetchApiKey();
-  }, []);
+  //   fetchApiKey();
+  // }, []);
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  // if (isLoading) {
+  //   return <div>Loading...</div>;
+  // }
+
+  const apiKey = "6hnaeh3756ny";
 
   const authToken = cookies.get("token");
   const client = StreamChat.getInstance(apiKey);
