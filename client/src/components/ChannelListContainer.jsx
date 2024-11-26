@@ -66,6 +66,7 @@ const ChannelListContent = ({
       <div className="channel-list__list__wrapper">
         <CompanyHeader />
         <ChannelSearch setToggleContainer={setToggleContainer} />
+
         <ChannelList
           filters={filters}
           channelRenderFilterFn={customChannelTeamFilter}
