@@ -47,7 +47,6 @@ A real-time chat application with features like text messaging, reactions, user 
 
    ```bash
    git clone https://github.com/Shravan250/ChatApp.git
-   cd Auth-App
    ```
 
 2. **Install dependencies**:
